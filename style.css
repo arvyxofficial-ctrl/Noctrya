@@ -1,228 +1,377 @@
-/* Gaya Dasar & Tema Ungu Elegan (Tidak Lebay) */
-body {
-    background-color: #08060f;
-    color: #e2e8f0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    position: relative;
-    overflow-x: hidden;
+:root {
+    --bg-dark: #0a070f;
+    --parchment: #161224;
+    --parchment-border: #4a356c;
+    --gold: #d4af37;
+    --gold-glow: rgba(212, 175, 55, 0.4);
+    --purple-mystic: #7c3aed;
+    --purple-glow: rgba(124, 58, 237, 0.5);
+    --text-main: #e2d9f3;
+    --text-muted: #9d8ec4;
+    --font-medieval: 'Cinzel', 'Georgia', serif;
 }
 
-/* --- BACKGROUND: SILUET KERAJAAN & API UNGU DI TENGAH --- */
-.sanctuary-bg {
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=IM+Fell+English+SC&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-medieval);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    background-image: 
+        radial-gradient(circle at 50% 30%, rgba(76, 29, 149, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(45, 21, 88, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(45, 21, 88, 0.2) 0%, transparent 50%);
+}
+
+/* Layer Ambient untuk Kunang-Kunang */
+.ambient-layer {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
     overflow: hidden;
 }
 
-/* Siluet Kastil/Kerajaan di bagian bawah-tengah (samar/dark) */
-.kingdom-silhouette {
+/* Kunang-Kunang / Fireflies Kecil */
+.firefly {
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 1000px;
-    height: 35vh;
-    background: linear-gradient(to top, rgba(15, 10, 25, 0.85) 0%, transparent 100%),
-                radial-gradient(ellipse at bottom, rgba(45, 27, 78, 0.3) 0%, transparent 70%);
-    opacity: 0.45;
-    /* Efek bentuk siluet menara istana menggunakan clip-path */
-    clip-path: polygon(
-        0% 100%, 
-        0% 85%, 5% 82%, 5% 75%, 8% 70%, 8% 80%, 12% 80%, 15% 60%, 18% 60%, 
-        20% 75%, 25% 75%, 28% 40%, 32% 40%, 35% 70%, 40% 70%, 45% 50%, 
-        50% 30%, 55% 50%, 60% 70%, 65% 70%, 68% 40%, 72% 40%, 75% 75%, 
-        80% 75%, 82% 60%, 85% 60%, 88% 80%, 92% 80%, 92% 70%, 95% 75%, 
-        95% 82%, 100% 85%, 100% 100%
-    );
-}
-
-/* Api Ungu Menyala di Tengah (Lembut, Estetik) */
-.central-purple-flame {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 320px;
-    height: 320px;
-    background: radial-gradient(circle, rgba(147, 51, 234, 0.18) 0%, rgba(88, 28, 135, 0.08) 45%, transparent 75%);
+    width: 4px;
+    height: 4px;
+    background-color: #e9d5ff;
     border-radius: 50%;
-    animation: flamePulse 4s infinite ease-in-out;
+    box-shadow: 0 0 6px #c084fc, 0 0 12px #7c3aed;
+    animation: fireflyFloat linear infinite;
+    opacity: 0;
 }
 
-@keyframes flamePulse {
-    0%, 100% {
-        transform: translate(-50%, -50%) scale(0.95);
-        opacity: 0.6;
+@keyframes fireflyFloat {
+    0% {
+        transform: translateY(105vh) translateX(0);
+        opacity: 0;
     }
-    50% {
-        transform: translate(-50%, -50%) scale(1.15);
-        opacity: 0.9;
+    20% {
+        opacity: 0.8;
+    }
+    80% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-10vh) translateX(50px);
+        opacity: 0;
     }
 }
 
-/* Header & Navigasi (Pastikan z-index di atas background) */
-.wiki-header {
-    background: linear-gradient(to bottom, #120b20, #08060f);
-    border-bottom: 1px solid #231638;
+/* Medieval Frame Layout */
+.grimoire-container {
+    max-width: 1100px;
+    margin: 30px auto;
     padding: 20px;
-    text-align: center;
     position: relative;
     z-index: 2;
 }
 
-.logo-area h1 {
-    margin: 0;
-    font-size: 1.8rem;
+/* Header / Medieval Banner */
+.medieval-header {
+    text-align: center;
+    border: 2px solid var(--gold);
+    background: linear-gradient(135deg, #120b1e 0%, #1e1438 100%);
+    padding: 30px 20px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.2);
+    margin-bottom: 30px;
+    border-radius: 4px;
+}
+
+.medieval-header::before, .medieval-header::after {
+    content: '❖';
+    position: absolute;
+    color: var(--gold);
+    font-size: 1.2rem;
+    top: 10px;
+}
+.medieval-header::before { left: 15px; }
+.medieval-header::after { right: 15px; }
+
+.medieval-header h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-shadow: 0 0 10px var(--gold-glow);
+    margin-bottom: 8px;
+}
+
+.medieval-header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
     letter-spacing: 2px;
-    color: #f3e8ff;
-    text-shadow: 0 0 8px rgba(168, 85, 247, 0.3);
+    text-transform: uppercase;
 }
 
-.logo-area p {
-    margin: 5px 0 15px 0;
-    font-size: 0.85rem;
-    color: #a78bfa;
-}
-
-.wiki-nav {
+/* Medieval Navigation Bar */
+.medieval-nav {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 15px;
-    margin-top: 10px;
+    margin-top: 20px;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    padding-top: 15px;
 }
 
-.wiki-nav a {
-    color: #9ca3af;
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 600;
-    padding: 5px 10px;
+.nav-btn {
+    background: transparent;
+    border: 1px solid var(--parchment-border);
+    color: var(--text-main);
+    padding: 8px 18px;
+    font-family: var(--font-medieval);
+    font-size: 0.9rem;
+    cursor: pointer;
     transition: all 0.3s ease;
-}
-
-.wiki-nav a:hover, .wiki-nav a.active {
-    color: #c084fc;
-    border-bottom: 2px solid #c084fc;
-}
-
-/* Konten Utama & Hero Section */
-.wiki-content {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 30px 20px;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-section {
-    text-align: center;
-    padding: 45px 20px;
-    background: rgba(15, 10, 26, 0.85); /* Semi transparan biar siluet belakang keliatan tipis */
-    backdrop-filter: blur(4px);
-    border: 1px solid #2d1a4a;
-    border-radius: 10px;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-}
-
-.universe-tag {
-    background-color: #2e1065;
-    color: #e9d5ff;
-    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-weight: bold;
-    border: 1px solid #6b21a8;
+    position: relative;
+    overflow: hidden;
 }
 
-.hero-section h2 {
-    font-size: 2.2rem;
-    margin: 15px 0;
-    color: #fae8ff;
-}
-
-.hero-desc {
-    font-size: 1.05rem;
-    color: #d8b4fe;
-    max-width: 700px;
-    margin: 0 auto 25px auto;
-}
-
-/* Tombol Explore World */
-.btn-explore {
-    display: inline-block;
-    background-color: rgba(107, 33, 168, 0.15);
-    color: #e9d5ff;
-    border: 1px solid #9333ea;
-    padding: 12px 28px;
-    font-size: 1rem;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-}
-
-.btn-explore:hover {
-    background-color: #9333ea;
+.nav-btn:hover, .nav-btn.active {
+    background-color: var(--purple-mystic);
     color: #ffffff;
-    border-color: #c084fc;
-    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+    border-color: var(--gold);
+    box-shadow: 0 0 12px var(--purple-glow);
     transform: translateY(-2px);
 }
 
-/* Lore Preview Cards */
-.lore-preview {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background-color: rgba(14, 10, 22, 0.85);
-    backdrop-filter: blur(4px);
-    border: 1px solid #231638;
-    padding: 20px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.card:hover {
-    border-color: #7e22ce;
-    transform: translateY(-3px);
-}
-
-.card h3 {
-    margin-top: 0;
-    color: #f3e8ff;
-    font-size: 1.2rem;
-}
-
-.card p {
-    color: #a78bfa;
-    font-size: 0.9rem;
-    margin-bottom: 0;
-}
-
-/* Footer */
-.wiki-footer {
-    text-align: center;
-    padding: 20px;
-    color: #6b6382;
-    font-size: 0.8rem;
-    border-top: 1px solid #1a1429;
-    margin-top: 40px;
+/* Grimoire Page Viewport */
+.grimoire-page {
+    display: none;
+    background: linear-gradient(to bottom, rgba(22, 18, 36, 0.9), rgba(12, 9, 20, 0.95));
+    border: 2px solid var(--parchment-border);
+    padding: 40px;
     position: relative;
-    z-index: 2;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    animation: fadeIn 0.5s ease-in-out forwards;
+    border-radius: 4px;
+}
+
+.grimoire-page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Central Flame Section */
+.hero-sanctuary {
+    text-align: center;
+    position: relative;
+    padding: 40px 0;
+}
+
+.central-flame-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.purple-flame {
+    width: 100px;
+    height: 140px;
+    background: radial-gradient(circle at bottom, #c084fc 0%, #7c3aed 50%, rgba(76, 29, 149, 0) 80%);
+    border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+    box-shadow: 0 0 30px #9333ea, 0 0 60px rgba(147, 51, 234, 0.4);
+    animation: flameFlicker 3s infinite alternate ease-in-out;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.purple-flame:hover {
+    transform: scale(1.1);
+}
+
+@keyframes flameFlicker {
+    0% { transform: scale(1) rotate(-2deg); opacity: 0.85; filter: hue-rotate(0deg); }
+    50% { transform: scale(1.05) rotate(2deg); opacity: 1; filter: hue-rotate(10deg); }
+    100% { transform: scale(0.98) rotate(-1deg); opacity: 0.9; filter: hue-rotate(-5deg); }
+}
+
+.flame-base-glow {
+    position: absolute;
+    width: 160px;
+    height: 40px;
+    background: rgba(168, 85, 247, 0.3);
+    border-radius: 50%;
+    bottom: 10px;
+    filter: blur(10px);
+    animation: pulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(0.9); opacity: 0.4; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+/* Lore Cards Grid */
+.lore-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.lore-card {
+    background: rgba(24, 18, 42, 0.7);
+    border: 1px solid var(--parchment-border);
+    padding: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.lore-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+    transform: translateY(-4px);
+    background: rgba(35, 25, 60, 0.85);
+}
+
+.lore-card h3 {
+    color: var(--gold);
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lore-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(5, 3, 10, 0.85);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-box {
+    background: #150f24;
+    border: 2px solid var(--gold);
+    width: 90%;
+    max-width: 600px;
+    padding: 35px;
+    position: relative;
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.open .modal-box {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px; right: 20px;
+    background: none;
+    border: none;
+    color: var(--gold);
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-family: var(--font-medieval);
+}
+
+.modal-title {
+    color: var(--gold);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--parchment-border);
+    padding-bottom: 10px;
+}
+
+.modal-body {
+    color: var(--text-main);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Interactive Bar */
+.interactive-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    background: rgba(18, 11, 30, 0.8);
+    border: 1px solid var(--parchment-border);
+    padding: 12px 20px;
+}
+
+.status-scroll {
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.action-sigil-btn {
+    background: var(--purple-mystic);
+    color: white;
+    border: 1px solid var(--gold);
+    padding: 6px 14px;
+    cursor: pointer;
+    font-family: var(--font-medieval);
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+
+.action-sigil-btn:hover {
+    background: var(--gold);
+    color: #000;
+}
+
+.medieval-footer {
+    text-align: center;
+    padding: 25px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--parchment-border);
+    margin-top: 40px;
+    letter-spacing: 1px;
+}
+
+@media(max-width: 768px) {
+    .medieval-header h1 { font-size: 1.8rem; }
+    .grimoire-page { padding: 20px; }
 }
