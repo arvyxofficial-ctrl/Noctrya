@@ -3,70 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noctrya Wiki - The Last Sanctuary</title>
+    <title>Noctrya — The Last Sanctuary [Medieval Grimoire]</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Background Siluet Kerajaan & Efek Api Ungu di Tengah -->
-    <div class="sanctuary-bg">
-        <div class="kingdom-silhouette"></div>
-        <div class="central-purple-flame"></div>
+    <!-- Layer Ambient (Kunang-Kunang Bertebaran) -->
+    <div class="ambient-layer" id="ambientLayer"></div>
+
+    <div class="grimoire-container">
+        <!-- Header / Banner -->
+        <header class="medieval-header">
+            <h1>NOCTRYA</h1>
+            <p>The Last Sanctuary • Scandinavian Lumea Grimoire</p>
+            
+            <nav class="medieval-nav">
+                <button class="nav-btn active" onclick="switchPage('home', event)">Sanctuary</button>
+                <button class="nav-btn" onclick="switchPage('worlds', event)">Realms</button>
+                <button class="nav-btn" onclick="switchPage('characters', event)">Entities</button>
+                <button class="nav-btn" onclick="switchPage('magic', event)">Arcana</button>
+                <button class="nav-btn" onclick="switchPage('chronicles', event)">Chronicles</button>
+            </nav>
+        </header>
+
+        <!-- Interactive Bar -->
+        <div class="interactive-bar">
+            <span class="status-scroll" id="statusText">Status: Grimoire Sealed & Protected</span>
+            <button class="action-sigil-btn" onclick="triggerSigilBlessing()">Invoke Sigil</button>
+        </div>
+
+        <!-- PAGE 1: HOME -->
+        <section id="home" class="grimoire-page active">
+            <div class="hero-sanctuary">
+                <div class="central-flame-container" onclick="igniteMoreFlames()">
+                    <div class="flame-base-glow"></div>
+                    <div class="purple-flame"></div>
+                </div>
+                <h2 style="color: var(--gold); font-size: 2rem; margin-bottom: 15px;">THE ETERNAL FLAME OF NOCTRYA</h2>
+                <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto 30px auto; line-height: 1.8;">
+                    You stand before the threshold of the deep spiritual sanctuary. Neither prison nor wasteland, 
+                    Noctrya is the ultimate haven where forgotten souls, ancient spirits, and primordial echoes 
+                    find their eternal resting peace beneath the twilight skies of Scandinavian Lumea.
+                </p>
+            </div>
+
+            <div class="lore-grid">
+                <div class="lore-card" onclick="openLoreModal('Upper Realm', 'The realm of absolute light, divine order, and pristine celestial architecture. Home to higher deities and infallible holy entities.')">
+                    <h3>☀️ Upper Realm</h3>
+                    <p>The domain of absolute light and strict divine order. Governed by celestial statutes.</p>
+                </div>
+                <div class="lore-card" onclick="openLoreModal('Middle Realm', 'The vast neutral plane where mortal kingdoms, knights, sorcerers, and diverse races forge their own destinies through blood and trial.')">
+                    <h3>🌍 Middle Realm</h3>
+                    <p>The mortal theater of trials, sword, and sorcery where free will reigns supreme.</p>
+                </div>
+                <div class="lore-card" onclick="openLoreModal('Noctrya', 'The deepest sanctuary. A subterranean dimension bathed in amethyst glow, protecting the weary souls and ancient secrets from upper turbulence.')">
+                    <h3>🌑 Noctrya</h3>
+                    <p>The twilight sanctuary. The ultimate resting ground for souls bound to the ancient dark.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: REALMS -->
+        <section id="worlds" class="grimoire-page">
+            <h2 style="color: var(--gold); font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid var(--parchment-border); padding-bottom: 10px;">The Threefold Cosmos</h2>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">Explore the structural pillars holding the Scandinavian Lumea universe together.</p>
+            
+            <div class="lore-grid">
+                <div class="lore-card" onclick="openLoreModal('Aethelgard (Upper)', 'The floating citadels of pure radiance. Time moves differently here, measured in eons rather than heartbeats.')">
+                    <h3>Aethelgard (The Zenith)</h3>
+                    <p>Citadels of unblemished light overlooking all creation.</p>
+                </div>
+                <div class="lore-card" onclick="openLoreModal('Midgardria (Middle)', 'Sprawling kingdoms of stone and timber, bustling market towns, and mist-shrouded forests.')">
+                    <h3>Midgardria (The Crucible)</h3>
+                    <p>The mortal realm of kingdoms, politics, and steel.</p>
+                </div>
+                <div class="lore-card" onclick="openLoreModal('Catacombs of Noctrya', 'Endless cavernous halls lit by bioluminescent amethyst crystals and floating violet wisps.')">
+                    <h3>Noctrya (The Depths)</h3>
+                    <p>Sanctuary chambers carved into the deep root systems of the cosmos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: CHARACTERS -->
+        <section id="characters" class="grimoire-page">
+            <h2 style="color: var(--gold); font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid var(--parchment-border); padding-bottom: 10px;">Guardians & Entities</h2>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">Notable figures bound to the sanctuary's fate.</p>
+            
+            <div class="lore-grid">
+                <div class="lore-card" onclick="openLoreModal('The Ashen Warden', 'A silent sentinel clad in blackened armor, bearing a greatsword forged from fallen stars. Guardian of the Veil.')">
+                    <h3>The Ashen Warden</h3>
+                    <p>The eternal gatekeeper who stands between chaos and sanctuary.</p>
+                </div>
+                <div class="lore-card" onclick="openLoreModal('Lady Vespera', 'An ancient arch-mage of the purple flame, weaving stellar spells and guiding lost souls through the veil.')">
+                    <h3>Lady Vespera</h3>
+                    <p>High weaver of arcane mysteries and keeper of the grimoire.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4: MAGIC -->
+        <section id="magic" class="grimoire-page">
+            <h2 style="color: var(--gold); font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid var(--parchment-border); padding-bottom: 10px;">The Arcane Arts</h2>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">The fundamental magic systems governing energy and spirit.</p>
+            
+            <div class="lore-grid">
+                <div class="lore-card" onclick="openLoreModal('Umbral Pyromancy', 'Unlike destructive flame, umbral fire purifies spirit, mends soul-fractures, and reveals hidden truths in pitch darkness.')">
+                    <h3>Umbral Pyromancy</h3>
+                    <p>Sacred purple flames that warm the soul without burning flesh.</p>
+                </div>
+                <div class="lore-card" onclick="openLoreModal('Celestial Runes', 'Carved symbols that channel cosmic laws into tangible barriers, wards, and spatial portals.')">
+                    <h3>Celestial Runes</h3>
+                    <p>Geometric glyphs inscribed to manipulate elemental and spiritual forces.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 5: CHRONICLES -->
+        <section id="chronicles" class="grimoire-page">
+            <h2 style="color: var(--gold); font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid var(--parchment-border); padding-bottom: 10px;">Chronicles of the Lumea</h2>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">Historical records etched into the obsidian tablets.</p>
+            
+            <div class="lore-card" style="margin-bottom: 15px;" onclick="openLoreModal('The Great Convergence', 'The era when the three realms aligned, forcing the creation of Noctrya as an eternal sanctuary for the displaced.')">
+                <h3>Era I: The Great Convergence</h3>
+                <p>When boundaries dissolved and the Sanctuary was forged from ancient starlight.</p>
+            </div>
+            <div class="lore-card" onclick="openLoreModal('The Age of Silence', 'Centuries of quiet contemplation within Noctrya, where civilizations below thrived in peace away from upper wars.')">
+                <h3>Era II: The Age of Silence</h3>
+                <p>The long era of inner peace and spiritual awakening within the depths.</p>
+            </div>
+        </section>
+
+        <footer class="medieval-footer">
+            <p>&copy; 2026 Noctrya Grimoire • Scandinavian Lumea Universe</p>
+        </footer>
     </div>
 
-    <!-- Header / Navigasi -->
-    <header class="wiki-header">
-        <div class="logo-area">
-            <h1>NOCTRYA WIKI</h1>
-            <p>An official world encyclopedia • Part of Scandinavian Lumea</p>
+    <!-- Modal -->
+    <div class="modal-overlay" id="loreModal" onclick="closeLoreModal(event)">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModalDirect()">×</button>
+            <h3 class="modal-title" id="modalTitle">Lore Title</h3>
+            <div class="modal-body" id="modalText">Detailed lore description goes here...</div>
         </div>
-        <nav class="wiki-nav">
-            <a href="index.html" class="active">Home</a>
-            <a href="world.html">World</a>
-            <a href="characters.html">Characters</a>
-            <a href="magic.html">Magic</a>
-            <a href="history.html">History</a>
-            <a href="map.html">Map</a>
-        </nav>
-    </header>
+    </div>
 
-    <!-- Konten Utama -->
-    <main class="wiki-content">
-        <section class="hero-section">
-            <span class="universe-tag">Scandinavian Lumea Universe</span>
-            <h2>WELCOME TO NOCTRYA</h2>
-            <p class="hero-desc">
-                A fantasy world divided into <strong>Upper Realm</strong>, <strong>Middle Realm</strong>, 
-                and the deepest sanctuary: <strong>Noctrya — The Last Sanctuary</strong>. 
-                Where forgotten souls, ancient spirits, and primordial entities find their true home.
-            </p>
-            
-            <div class="hero-actions">
-                <a href="world.html" class="btn-explore">[ Explore World ]</a>
-            </div>
-        </section>
-
-        <!-- Preview Singkat Lore -->
-        <section class="lore-preview">
-            <div class="card">
-                <h3>☀️ Upper Realm</h3>
-                <p>Realm of Light, home to deities, holy spirits, and entities of absolute order and purity.</p>
-            </div>
-            <div class="card">
-                <h3>🌍 Middle Realm</h3>
-                <p>The neutral world where humans and various mortal races freely choose their own paths.</p>
-            </div>
-            <div class="card">
-                <h3>🌑 Noctrya (The Sanctuary)</h3>
-                <p>The deep spiritual sanctuary. Not a prison, but a final home for souls bound to the dark.</p>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="wiki-footer">
-        <p>&copy; 2026 Noctrya Wiki. Built for the Scandinavian Lumea universe.</p>
-    </footer>
-
+    <!-- Hubungkan Script JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
