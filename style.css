@@ -1,0 +1,165 @@
+/* Gaya Dasar & Tema Gelap Nuansa Ungu Mewah */
+body {
+    background-color: #07060b; /* Latar belakang gelap dengan nuansa keunguan */
+    color: #e2e8f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Header & Navigasi dengan Garis Gradasi Ungu-Biru */
+.wiki-header {
+    background: linear-gradient(to bottom, #130d22, #07060b);
+    border-bottom: 2px solid #2e1a47;
+    padding: 20px;
+    text-align: center;
+}
+
+.logo-area h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    color: #f3e8ff;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.4); /* Efek menyala tipis pada judul */
+}
+
+.logo-area p {
+    margin: 5px 0 15px 0;
+    font-size: 0.85rem;
+    color: #a78bfa;
+}
+
+.wiki-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.wiki-nav a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+}
+
+.wiki-nav a:hover, .wiki-nav a.active {
+    color: #c084fc;
+    border-bottom: 2px solid #c084fc;
+    text-shadow: 0 0 8px rgba(192, 132, 252, 0.6); /* Efek menyala saat menu disentuh */
+}
+
+/* Konten Utama & Hero Section */
+.wiki-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.hero-section {
+    text-align: center;
+    padding: 45px 20px;
+    background: radial-gradient(circle at center, #1e1136 0%, #0c0916 100%);
+    border: 1px solid #3b2063;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 25px rgba(107, 33, 168, 0.15); /* Cahaya ungu lembut di kotak utama */
+}
+
+.universe-tag {
+    background-color: #3b0764;
+    color: #e9d5ff;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    border: 1px solid #7e22ce;
+}
+
+.hero-section h2 {
+    font-size: 2.2rem;
+    margin: 15px 0;
+    color: #fae8ff;
+    text-shadow: 0 0 15px rgba(216, 180, 254, 0.4); /* Tulisan utama bercahaya ungu */
+}
+
+.hero-desc {
+    font-size: 1.05rem;
+    color: #d8b4fe;
+    max-width: 700px;
+    margin: 0 auto 25px auto;
+}
+
+/* Tombol Explore World dengan Efek Menyala (Glow) */
+.btn-explore {
+    display: inline-block;
+    background-color: rgba(126, 34, 206, 0.1);
+    color: #e9d5ff;
+    border: 2px solid #a855f7;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.btn-explore:hover {
+    background-color: #a855f7;
+    color: #07060b;
+    border-color: #c084fc;
+    /* Efek menyala terang saat ditekan/di-hover */
+    box-shadow: 0 0 20px rgba(192, 132, 252, 0.8), 0 0 40px rgba(168, 85, 247, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Lore Preview Cards dengan Garis Ungu Elegan */
+.lore-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #0e0b16;
+    border: 1px solid #2a1b4e;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: #9333ea;
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.2); /* Kotak ikut bercahaya ungu saat disentuh */
+    transform: translateY(-3px);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #f3e8ff;
+    font-size: 1.2rem;
+}
+
+.card p {
+    color: #b8b2cb;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* Footer */
+.wiki-footer {
+    text-align: center;
+    padding: 20px;
+    color: #6b6382;
+    font-size: 0.8rem;
+    border-top: 1px solid #1a1429;
+    margin-top: 40px;
+}
+
